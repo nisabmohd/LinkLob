@@ -21,7 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className={`${GeistMono.variable} ${font.variable}`} lang="en">
+    <html
+      className={`${GeistMono.variable} ${font.variable}`}
+      lang="en"
+      suppressHydrationWarning
+    >
       <body className="font-regular">
         <ThemeProvider
           attribute="class"
