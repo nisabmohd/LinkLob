@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default async function Home() {
   return (
-    <div className="flex items-center justify-center min-h-screen py-6 sm:py-12">
+    <div className="flex items-center justify-center py-6 sm:py-12">
       <div className="grid max-w-3xl w-full gap-2 px-4 md:px-10">
         <div className="flex flex-col items-start gap-2">
           <h1 className="text-3xl font-bold tracking-tight">

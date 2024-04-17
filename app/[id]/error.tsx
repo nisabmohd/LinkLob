@@ -16,7 +16,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="flex flex-col max-w-fit mx-auto justify-center py-6 sm:py-12">
+    <div className="py-6 sm:py-12 px-4 md:px-10">
       <h2 className="text-3xl font-bold mb-4">Something went wrong!</h2>
       <Button
         onClick={

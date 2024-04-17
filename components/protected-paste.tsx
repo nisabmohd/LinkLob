@@ -96,9 +96,17 @@ function BlurredPlaceholder() {
         repudiandae neque deserunt repellendus nesciunt vitae illum ipsum,
         aliquid, sit maiores! Velit necessitatibus sequi deleniti molestiae rem
         molestias id, culpa qui omnis facilis perspiciatis blanditiis repellat
-        consequuntur commodi tenetur delectus quam aut? Animi nemo id aliquam
-        ipsam enim eaque totam saepe corporis eum dicta odit error excepturi nam
-        illo, dignissimos quae,
+        consequuntur commodi t corporis eum dicta odit error excepturi nam illo,
+        dignissimos quae,
+      </p>
+      <p>
+        sint autem est fugiat sit sequi! Natus pariatur dolore quae, quod quidem
+        error vero alias ut, ex fugiat debitis ea facere? Nobis facilis
+        dignissimos odio soluta. Sint rem magnam itaque est quia, atque
+        distinctio assumenda esse. Optio itaque placeat voluptatibus quam
+        deleniti obt magni aperiam laboriosam corporis eius reprehenderit vero,
+        nesciunt nulla alias asperiores voluptate molestias? Ab, eos? Dolores ex
+        error, saepe dolore, neque corporis maxime, quas ad cum a voluptates!
       </p>
       <p>
         sint autem est fugiat sit sequi! Natus pariatur dolore quae, quod quidem
@@ -106,24 +114,7 @@ function BlurredPlaceholder() {
         dignissimos odio soluta. Sint rem magnam itaque est quia, atque
         distinctio assumenda esse. Optio itaque placeat voluptatibus quam
         deleniti obcaecati expedita ut incidunt repellendus, animi nobis
-        laboriosam accusamus aut reiciendis sit dolore facere vel. Libero beatae
-        aliquid ad deserunt magni aperiam laboriosam corporis eius reprehenderit
-        vero, nesciunt nulla alias asperiores voluptate molestias? Ab, eos?
-        Dolores ex error, saepe dolore, neque corporis maxime, quas ad cum a
-        voluptates!
-      </p>
-      <p>
-        sint autem est fugiat sit sequi! Natus pariatur dolore quae, quod quidem
-        error vero alias ut, ex fugiat debitis ea facere? Nobis facilis
-        dignissimos odio soluta. Sint rem magnam itaque est quia, atque
-        distinctio assumenda esse. Optio itaque placeat voluptatibus quam
-        deleniti obcaecati expedita ut incidunt repellendus, animi nobis
-        laboriosam accusamus aut reiciendis sit dolore facere vel. Libero beatae
-        aliquid ad deserunt magni aperiam laboriosam corporis eius reprehenderit
-        vero, nesciunt nulla alias asperiores voluptate molestias? Ab, eos?
-        Dolores ex error, saepe dolore, neque corporis maxime, quas ad cum a
-        voluptates! Sunt repellat veniam doloremque, ratione omnis esse maxime
-        id.
+        laboriosam accusam
       </p>
     </div>
   );

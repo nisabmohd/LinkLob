@@ -16,7 +16,7 @@ export default async function View({
   if (!paste) notFound();
   return (
     <div className="flex justify-center min-h-screen py-6 sm:py-12">
-      <div className="flex flex-col gap-12 max-w-3xl w-full px-4 md:px-10">
+      <div className="flex flex-col gap-6 max-w-3xl w-full px-4 md:px-10">
         <div>
           <div className="flex items-start justify-between">
             <div className="flex flex-col items-start gap-2">
