@@ -1,5 +1,5 @@
 import { create } from "@/actions/paste";
-import { Button } from "@/components/ui/button";
+import Submit from "@/components/submit";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
@@ -20,7 +20,6 @@ export default async function Home() {
         <form action={create} className="grid gap-4">
           <Textarea
             className="rounded-md border p-4 mt-2 h-80 w-full"
-            autoFocus
             spellCheck="false"
             placeholder="Paste your markdown content here."
             name="content"
@@ -46,9 +45,9 @@ export default async function Home() {
                 {process.env.HOSTED_URL}/unique-url
               </Link>
             </p>
-            <Button className="w-full mt-4" type="submit">
+            <Submit className="w-full mt-4" type="submit">
               Create Paste
-            </Button>
+            </Submit>
           </div>
         </form>
       </div>
