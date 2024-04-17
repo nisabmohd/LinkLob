@@ -31,49 +31,100 @@ export default function ProtectedPaste({
   if (!isMounted) return null;
   if (!unlocked)
     return (
-      <Dialog open>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>
-              The content you are trying to access is locked.
-            </DialogTitle>
-            <DialogDescription>
-              Please enter the password to view the paste.
-            </DialogDescription>
-          </DialogHeader>
-          <div className="flex flex-col gap-3 py-4">
-            <Input
-              value={inputpassword}
-              onChange={(e) => setInputPassword(e.target.value)}
-              placeholder="Enter password"
-              type="password"
-            />
-            {enteredWrongPassword && (
-              <span className="text-sm text-red-400">
-                The password you entered seems incorrect!
-              </span>
-            )}
-            <Button
-              className="mt-4"
-              onClick={() => {
-                startTransition(async () => {
-                  const isCorrect = await verify(id, inputpassword);
-                  if (isCorrect) {
-                    setUnlocked(true);
-                    setEnteredWrongPassword(false);
-                    return;
-                  }
-                  setEnteredWrongPassword(true);
-                });
-              }}
-              disabled={!inputpassword}
-            >
-              {pending && <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />}
-              Verify
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
+      <>
+        <Dialog open>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle className="text-left leading-6">
+                The content you are trying to access is locked.
+              </DialogTitle>
+              <DialogDescription className="text-left">
+                Please enter the password to view the paste.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="flex flex-col gap-3 py-4">
+              <Input
+                value={inputpassword}
+                onChange={(e) => setInputPassword(e.target.value)}
+                placeholder="Enter password"
+                type="password"
+              />
+              {enteredWrongPassword && (
+                <span className="text-sm text-red-400">
+                  The password you entered seems incorrect!
+                </span>
+              )}
+              <Button
+                className="mt-4"
+                onClick={() => {
+                  startTransition(async () => {
+                    const isCorrect = await verify(id, inputpassword);
+                    if (isCorrect) {
+                      setUnlocked(true);
+                      setEnteredWrongPassword(false);
+                      return;
+                    }
+                    setEnteredWrongPassword(true);
+                  });
+                }}
+                disabled={!inputpassword}
+              >
+                {pending && (
+                  <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />
+                )}
+                Verify
+              </Button>
+            </div>
+          </DialogContent>
+        </Dialog>
+        <BlurredPlaceholder />
+      </>
     );
   return <Fragment>{children}</Fragment>;
+}
+
+function BlurredPlaceholder() {
+  return (
+    <div className="blur-sm">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
+        doloremque ad tempora dolorem veritatis illo similique qui, voluptatem
+        nemo, nulla nisi aspernatur vero laboriosam voluptatibus in
+        reprehenderit placeat doloribus mollitia, reiciendis excepturi eius
+        fugit eos explicabo? Voluptatibus ad at minus similique doloribus
+        facilis tempora exercitationem reprehenderit nobis est ut dolorum
+        repudiandae neque deserunt repellendus nesciunt vitae illum ipsum,
+        aliquid, sit maiores! Velit necessitatibus sequi deleniti molestiae rem
+        molestias id, culpa qui omnis facilis perspiciatis blanditiis repellat
+        consequuntur commodi tenetur delectus quam aut? Animi nemo id aliquam
+        ipsam enim eaque totam saepe corporis eum dicta odit error excepturi nam
+        illo, dignissimos quae,
+      </p>
+      <p>
+        sint autem est fugiat sit sequi! Natus pariatur dolore quae, quod quidem
+        error vero alias ut, ex fugiat debitis ea facere? Nobis facilis
+        dignissimos odio soluta. Sint rem magnam itaque est quia, atque
+        distinctio assumenda esse. Optio itaque placeat voluptatibus quam
+        deleniti obcaecati expedita ut incidunt repellendus, animi nobis
+        laboriosam accusamus aut reiciendis sit dolore facere vel. Libero beatae
+        aliquid ad deserunt magni aperiam laboriosam corporis eius reprehenderit
+        vero, nesciunt nulla alias asperiores voluptate molestias? Ab, eos?
+        Dolores ex error, saepe dolore, neque corporis maxime, quas ad cum a
+        voluptates!
+      </p>
+      <p>
+        sint autem est fugiat sit sequi! Natus pariatur dolore quae, quod quidem
+        error vero alias ut, ex fugiat debitis ea facere? Nobis facilis
+        dignissimos odio soluta. Sint rem magnam itaque est quia, atque
+        distinctio assumenda esse. Optio itaque placeat voluptatibus quam
+        deleniti obcaecati expedita ut incidunt repellendus, animi nobis
+        laboriosam accusamus aut reiciendis sit dolore facere vel. Libero beatae
+        aliquid ad deserunt magni aperiam laboriosam corporis eius reprehenderit
+        vero, nesciunt nulla alias asperiores voluptate molestias? Ab, eos?
+        Dolores ex error, saepe dolore, neque corporis maxime, quas ad cum a
+        voluptates! Sunt repellat veniam doloremque, ratione omnis esse maxime
+        id.
+      </p>
+    </div>
+  );
 }
