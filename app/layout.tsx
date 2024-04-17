@@ -22,11 +22,11 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      className={`${GeistMono.variable} ${font.variable}`}
+      className={`${GeistMono.variable} ${font.variable} dark`}
       lang="en"
       suppressHydrationWarning
     >
-      <body className="font-regular dark:bg-zinc-950 bg-white dark:text-stone-100 text-black">
+      <body className="font-regular">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
