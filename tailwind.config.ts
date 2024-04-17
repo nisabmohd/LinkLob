@@ -68,6 +68,10 @@ const config = {
           to: { height: "0" },
         },
       },
+      fontFamily: {
+        code: ["var(--font-geist-mono)"],
+        regular: ["var(--font-regular)"],
+      },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",

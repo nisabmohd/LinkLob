@@ -43,7 +43,7 @@ export default async function Home() {
             <p className="text-xs text-gray-500">
               Your paste&apos;s URL:
               <Link className="underline underline-offset-2" href="#">
-                example.com/unique-url
+                {process.env.HOSTED_URL}/unique-url
               </Link>
             </p>
             <Button className="w-full mt-4" type="submit">

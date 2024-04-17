@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 
-const font = Space_Grotesk({ subsets: ["latin"], weight: "400" });
+const font = Space_Grotesk({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-regular",
+});
 
 export const metadata: Metadata = {
   title: "LinkLob",
@@ -16,8 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={font.className}>
+    <html className={`${GeistMono.variable} ${font.variable}`} lang="en">
+      <body className="font-regular">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
