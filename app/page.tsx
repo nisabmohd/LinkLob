@@ -1,12 +1,13 @@
+import { create } from "@/actions/paste";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
   return (
     <div className="flex items-center justify-center min-h-screen py-6 sm:py-12">
-      <div className="grid max-w-3xl w-full gap-4 px-4 md:px-10">
+      <div className="grid max-w-3xl w-full gap-2 px-4 md:px-10">
         <div className="flex flex-col items-start gap-2">
           <h1 className="text-3xl font-bold tracking-tight">
             LinkLob : Paste your content
@@ -15,22 +16,27 @@ export default function Home() {
             Share code, notes, and text with others. The content you paste here
             is public and accessible via a unique URL.
           </p>
+        </div>
+        <form action={create} className="grid gap-4">
           <Textarea
             className="rounded-md border p-4 mt-2 h-80 w-full"
             autoFocus
             spellCheck="false"
-            placeholder="Paste your content here (markdown supported)"
+            placeholder="Paste your markdown content here."
+            name="content"
+            required
           />
-        </div>
-        <form className="grid gap-4">
           <Input
             className="rounded-md border p-4"
             placeholder="Title for your paste"
             type="text"
+            name="title"
+            required
           />
           <Input
             className="rounded-md border p-4"
             placeholder="Password to protect paste (optional)"
+            name="password"
             type="password"
           />
           <div className="grid gap-2 text-sm">
