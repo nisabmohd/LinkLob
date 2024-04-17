@@ -6,7 +6,6 @@ import { buttonVariants } from "@/components/ui/button";
 import { ChevronLeftIcon } from "lucide-react";
 import Link from "next/link";
 import { timeAgo } from "@/lib/utils";
-import { Suspense } from "react";
 
 export default async function View({
   params: { id },
@@ -42,11 +41,9 @@ export default async function View({
         </div>
         <div>
           <div className="leading-7 prose prose-slate dark:prose-invert max-w-full prose-code:font-code dark:prose-code:bg-neutral-900 dark:prose-pre:bg-neutral-900">
-            <Suspense fallback="Loading...">
-              <ProtectedPaste isProtected={!!paste.password} id={paste.id}>
-                <MDXRemote source={paste.content} />
-              </ProtectedPaste>
-            </Suspense>
+            <ProtectedPaste isProtected={!!paste.password} id={paste.id}>
+              <MDXRemote source={paste.content} />
+            </ProtectedPaste>
           </div>
         </div>
       </div>
