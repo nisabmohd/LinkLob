@@ -14,5 +14,5 @@ export async function create(formData: FormData) {
     })
     .returning();
   const createdPaste = data[0];
-  redirect(`/${createdPaste.id}`);
+  redirect(`/${createdPaste.paste}`);
 }

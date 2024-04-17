@@ -11,7 +11,7 @@ export default async function View({
   const data = await dbClient
     .select()
     .from(PasteTable)
-    .where(eq(PasteTable.id, id));
+    .where(eq(PasteTable.paste, id));
   if (data.length == 0) notFound();
   const paste = data[0];
   return (
@@ -21,7 +21,7 @@ export default async function View({
           <div className="flex items-start justify-between">
             <div className="flex flex-col items-start gap-2">
               <h1 className="text-3xl font-extrabold tracking-tight">
-                Taxing Laughter: The Joke Tax Chronicles
+                {paste.name}
               </h1>
               <p className="leading-none text-muted-foreground">
                 Posted 2 hours ago
