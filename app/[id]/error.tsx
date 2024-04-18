@@ -16,8 +16,8 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="py-6 sm:py-12 px-4 md:px-10">
-      <h2 className="text-3xl font-bold mb-4">Something went wrong!</h2>
+    <div className="max-w-3xl mx-auto py-6 sm:py-12 px-4 md:px-10">
+      <h2 className="text-3xl font-bold mb-4">Something wrong in markdown!</h2>
       <Button
         onClick={
           // Attempt to recover by trying to re-render the segment

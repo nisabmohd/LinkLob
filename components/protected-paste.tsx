@@ -28,6 +28,18 @@ export default function ProtectedPaste({
   const [enteredWrongPassword, setEnteredWrongPassword] = useState(false);
   const isMounted = useMounted();
 
+  function handlePasswordCheck() {
+    startTransition(async () => {
+      const isCorrect = await verify(id, inputpassword);
+      if (isCorrect) {
+        setUnlocked(true);
+        setEnteredWrongPassword(false);
+        return;
+      }
+      setEnteredWrongPassword(true);
+    });
+  }
+
   if (!isMounted) return null;
   if (!unlocked)
     return (
@@ -45,6 +57,7 @@ export default function ProtectedPaste({
             <div className="flex flex-col gap-3 py-4">
               <Input
                 value={inputpassword}
+                onKeyDown={(e) => e.keyCode == 13 && handlePasswordCheck()}
                 onChange={(e) => setInputPassword(e.target.value)}
                 placeholder="Enter password"
                 type="password"
@@ -56,18 +69,8 @@ export default function ProtectedPaste({
               )}
               <Button
                 className="mt-4"
-                onClick={() => {
-                  startTransition(async () => {
-                    const isCorrect = await verify(id, inputpassword);
-                    if (isCorrect) {
-                      setUnlocked(true);
-                      setEnteredWrongPassword(false);
-                      return;
-                    }
-                    setEnteredWrongPassword(true);
-                  });
-                }}
-                disabled={!inputpassword}
+                onClick={handlePasswordCheck}
+                disabled={!inputpassword || pending}
               >
                 {pending && (
                   <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />
