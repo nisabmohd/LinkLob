@@ -12,7 +12,7 @@ export default async function Home() {
           <h1 className="text-3xl font-bold tracking-tight">
             LinkLob: Paste your content
           </h1>
-          <p className="text-gray-500 md:w-[80%] dark:text-gray-400">
+          <p className="text-muted-foreground md:w-[80%]">
             Share code, notes, and text with others. The content you paste here
             is public and accessible via a unique URL.
           </p>

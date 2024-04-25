@@ -40,7 +40,7 @@ export default async function View({ params: { id } }: PageProps) {
               >
                 <ChevronLeftIcon className="w-5 h-5 mr-2" /> Back to homepage
               </Link>
-              <h1 className="text-3xl font-extrabold tracking-tight">
+              <h1 className="text-3xl w-[95%] sm:w-full font-extrabold tracking-tight">
                 {paste.name}
               </h1>
               <p className="leading-none text-muted-foreground">
