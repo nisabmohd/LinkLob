@@ -1,14 +1,7 @@
 import type { Metadata } from "next";
-import { Space_Grotesk } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
-
-const font = Space_Grotesk({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-regular",
-});
 
 export const metadata: Metadata = {
   title: "LinkLob",
@@ -22,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      className={`${GeistMono.variable} ${font.variable} dark`}
+      className={`${GeistMono.variable} dark`}
       lang="en"
       suppressHydrationWarning
     >

@@ -69,8 +69,7 @@ const config = {
         },
       },
       fontFamily: {
-        code: ["var(--font-geist-mono)"],
-        regular: ["var(--font-regular)"],
+        regular: ["var(--font-geist-mono)"],
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",

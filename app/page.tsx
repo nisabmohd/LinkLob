@@ -10,7 +10,7 @@ export default async function Home() {
       <div className="grid max-w-3xl w-full gap-2 px-4 md:px-10">
         <div className="flex flex-col items-start gap-2">
           <h1 className="text-3xl font-bold tracking-tight">
-            LinkLob : Paste your content
+            LinkLob: Paste your content
           </h1>
           <p className="text-gray-500 md:w-[80%] dark:text-gray-400">
             Share code, notes, and text with others. The content you paste here

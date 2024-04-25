@@ -6,13 +6,24 @@ import { buttonVariants } from "@/components/ui/button";
 import { ChevronLeftIcon } from "lucide-react";
 import Link from "next/link";
 import { timeAgo } from "@/lib/utils";
+import { cache } from "react";
 
-export default async function View({
-  params: { id },
-}: {
+const cachedGetPasteFn = cache(getPaste);
+
+type PageProps = {
   params: { id: string };
-}) {
-  const paste = await getPaste(id);
+};
+
+export async function generateMetadata({ params: { id } }: PageProps) {
+  const paste = await cachedGetPasteFn(id);
+  if (!paste) return null;
+  return {
+    title: paste.name.slice(0, 20) + "...",
+  };
+}
+
+export default async function View({ params: { id } }: PageProps) {
+  const paste = await cachedGetPasteFn(id);
   if (!paste) notFound();
   return (
     <div className="flex justify-center min-h-screen py-6 sm:py-12">
@@ -24,11 +35,10 @@ export default async function View({
                 href="/"
                 className={buttonVariants({
                   variant: "link",
-                  size: "sm",
-                  className: "-ml-5 mb-2",
+                  className: "sm:-ml-5 -ml-3.5 mb-5 text-base",
                 })}
               >
-                <ChevronLeftIcon className="w-5 h-5 mr-1" /> Back to homepage
+                <ChevronLeftIcon className="w-5 h-5 mr-2" /> Back to homepage
               </Link>
               <h1 className="text-3xl font-extrabold tracking-tight">
                 {paste.name}
@@ -40,7 +50,7 @@ export default async function View({
           </div>
         </div>
         <div>
-          <div className="leading-7 prose prose-slate dark:prose-invert max-w-full prose-code:font-code dark:prose-code:bg-neutral-900 dark:prose-pre:bg-neutral-900">
+          <div className="leading-7 prose prose-slate dark:prose-invert max-w-full prose-code:font-code dark:prose-code:bg-neutral-900 dark:prose-pre:bg-neutral-900 break-words">
             <ProtectedPaste isProtected={!!paste.password} id={paste.id}>
               <MDXRemote source={paste.content} />
             </ProtectedPaste>
