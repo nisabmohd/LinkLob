@@ -8,6 +8,8 @@ import Link from "next/link";
 import { timeAgo } from "@/lib/utils";
 import { cache } from "react";
 
+export const revalidate = 0;
+
 const cachedGetPasteFn = cache(getPaste);
 
 type PageProps = {
