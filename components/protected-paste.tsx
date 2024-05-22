@@ -88,36 +88,21 @@ export default function ProtectedPaste({
 
 function BlurredPlaceholder() {
   return (
-    <div className="blur-sm">
+    <div className="blur-[5px]">
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
         doloremque ad tempora dolorem veritatis illo similique qui, voluptatem
         nemo, nulla nisi aspernatur vero laboriosam voluptatibus in
         reprehenderit placeat doloribus mollitia, reiciendis excepturi eius
         fugit eos explicabo? Voluptatibus ad at minus similique doloribus
-        facilis tempora exercitationem reprehenderit nobis est ut dolorum
-        repudiandae neque deserunt repellendus nesciunt vitae illum ipsum,
-        aliquid, sit maiores! Velit necessitatibus sequi deleniti molestiae rem
-        molestias id, culpa qui omnis facilis perspiciatis blanditiis repellat
-        consequuntur commodi t corporis eum dicta odit error excepturi nam illo,
-        dignissimos quae,
+        facilis tempora exercitationem reprehender
       </p>
       <p>
         sint autem est fugiat sit sequi! Natus pariatur dolore quae, quod quidem
         error vero alias ut, ex fugiat debitis ea facere? Nobis facilis
         dignissimos odio soluta. Sint rem magnam itaque est quia, atque
-        distinctio assumenda esse. Optio itaque placeat voluptatibus quam
-        deleniti obt magni aperiam laboriosam corporis eius reprehenderit vero,
-        nesciunt nulla alias asperiores voluptate molestias? Ab, eos? Dolores ex
-        error, saepe dolore, neque corporis maxime, quas ad cum a voluptates!
-      </p>
-      <p>
-        sint autem est fugiat sit sequi! Natus pariatur dolore quae, quod quidem
-        error vero alias ut, ex fugiat debitis ea facere? Nobis facilis
-        dignissimos odio soluta. Sint rem magnam itaque est quia, atque
-        distinctio assumenda esse. Optio itaque placeat voluptatibus quam
-        deleniti obcaecati expedita ut incidunt repellendus, animi nobis
-        laboriosam accusam
+        distinctio assumenda esse. eos? Dolores ex error, saepe dolore, neque
+        corporis maxime, quas ad cum a voluptates!
       </p>
     </div>
   );

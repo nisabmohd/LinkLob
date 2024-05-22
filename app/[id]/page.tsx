@@ -7,6 +7,7 @@ import { ChevronLeftIcon } from "lucide-react";
 import Link from "next/link";
 import { timeAgo } from "@/lib/utils";
 import { cache } from "react";
+import remarkGfm from "remark-gfm";
 
 export const revalidate = 0;
 
@@ -54,7 +55,14 @@ export default async function View({ params: { id } }: PageProps) {
         <div>
           <div className="leading-7 prose prose-slate dark:prose-invert max-w-full prose-code:font-code dark:prose-code:bg-neutral-900 dark:prose-pre:bg-neutral-900 break-words">
             <ProtectedPaste isProtected={!!paste.password} id={paste.id}>
-              <MDXRemote source={paste.content} />
+              <MDXRemote
+                options={{
+                  mdxOptions: {
+                    remarkPlugins: [remarkGfm],
+                  },
+                }}
+                source={paste.content}
+              />
             </ProtectedPaste>
           </div>
         </div>
