@@ -9,7 +9,12 @@ import { timeAgo } from "@/lib/utils";
 import { cache } from "react";
 import remarkGfm from "remark-gfm";
 
-export const revalidate = 0;
+export const dynamic = "force-static",
+  dynamicParams = true;
+
+export function generateStaticParams() {
+  return [];
+}
 
 const cachedGetPasteFn = cache(getPaste);
 
