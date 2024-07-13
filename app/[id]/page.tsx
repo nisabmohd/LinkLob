@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import ProtectedPaste from "@/components/protected-paste";
 import { getPaste } from "@/actions/paste";
 import { buttonVariants } from "@/components/ui/button";
 import { ChevronLeftIcon } from "lucide-react";
@@ -8,6 +7,7 @@ import Link from "next/link";
 import { timeAgo } from "@/lib/utils";
 import { cache } from "react";
 import remarkGfm from "remark-gfm";
+import Verifier from "@/components/verify";
 
 export const dynamic = "force-static",
   dynamicParams = true;
@@ -59,7 +59,7 @@ export default async function View({ params: { id } }: PageProps) {
         </div>
         <div>
           <div className="leading-7 prose prose-slate dark:prose-invert max-w-full prose-code:font-code dark:prose-code:bg-neutral-900 dark:prose-pre:bg-neutral-900 break-words">
-            <ProtectedPaste isProtected={!!paste.password} id={paste.id}>
+            <Verifier isProtected={!!paste.password} id={paste.id}>
               <MDXRemote
                 options={{
                   mdxOptions: {
@@ -68,7 +68,7 @@ export default async function View({ params: { id } }: PageProps) {
                 }}
                 source={paste.content}
               />
-            </ProtectedPaste>
+            </Verifier>
           </div>
         </div>
       </div>

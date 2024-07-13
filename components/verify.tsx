@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, PropsWithChildren, useState, useTransition } from "react";
+import { PropsWithChildren, useState, useTransition } from "react";
 import {
   Dialog,
   DialogContent,
@@ -14,7 +14,7 @@ import { verify } from "@/actions/paste";
 import { Loader2Icon } from "lucide-react";
 import useMounted from "@/hooks/useMounted";
 
-export default function ProtectedPaste({
+export default function Verifier({
   children,
   isProtected,
   id,
@@ -22,17 +22,24 @@ export default function ProtectedPaste({
   isProtected: boolean;
   id: string;
 }) {
-  const [unlocked, setUnlocked] = useState(!isProtected);
+  const [verified, setVerifed] = useState(!isProtected);
+  const isMounted = useMounted();
+
+  if (!isMounted) return "Loading....";
+  if (!verified) return <VerifyDialog cb={setVerifed} id={id} />;
+  return <div>{children}</div>;
+}
+
+function VerifyDialog({ cb, id }: { cb: (val: boolean) => void; id: string }) {
   const [inputpassword, setInputPassword] = useState("");
   const [pending, startTransition] = useTransition();
   const [enteredWrongPassword, setEnteredWrongPassword] = useState(false);
-  const isMounted = useMounted();
 
   function handlePasswordCheck() {
     startTransition(async () => {
       const isCorrect = await verify(id, inputpassword);
       if (isCorrect) {
-        setUnlocked(true);
+        cb(true);
         setEnteredWrongPassword(false);
         return;
       }
@@ -40,50 +47,45 @@ export default function ProtectedPaste({
     });
   }
 
-  if (!isMounted) return null;
-  if (!unlocked)
-    return (
-      <>
-        <Dialog open>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle className="text-left leading-6">
-                The content you are trying to access is locked.
-              </DialogTitle>
-              <DialogDescription className="text-left">
-                Please enter the password to view the paste.
-              </DialogDescription>
-            </DialogHeader>
-            <div className="flex flex-col gap-3 py-4">
-              <Input
-                value={inputpassword}
-                onKeyDown={(e) => e.keyCode == 13 && handlePasswordCheck()}
-                onChange={(e) => setInputPassword(e.target.value)}
-                placeholder="Enter password"
-                type="password"
-              />
-              {enteredWrongPassword && (
-                <span className="text-sm text-red-400">
-                  The password you entered seems incorrect!
-                </span>
-              )}
-              <Button
-                className="mt-4"
-                onClick={handlePasswordCheck}
-                disabled={!inputpassword || pending}
-              >
-                {pending && (
-                  <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />
-                )}
-                Verify
-              </Button>
-            </div>
-          </DialogContent>
-        </Dialog>
-        <BlurredPlaceholder />
-      </>
-    );
-  return <Fragment>{children}</Fragment>;
+  return (
+    <>
+      <Dialog open>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle className="text-left leading-6">
+              Password Required
+            </DialogTitle>
+            <DialogDescription className="text-left">
+              This content is protected. Please enter the password to proceed.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex flex-col gap-3 py-4">
+            <Input
+              value={inputpassword}
+              onKeyDown={(e) => e.keyCode == 13 && handlePasswordCheck()}
+              onChange={(e) => setInputPassword(e.target.value)}
+              placeholder="Enter password"
+              type="password"
+            />
+            {enteredWrongPassword && (
+              <span className="text-sm text-red-400">
+                The password you entered seems incorrect!
+              </span>
+            )}
+            <Button
+              className="mt-4"
+              onClick={handlePasswordCheck}
+              disabled={!inputpassword || pending}
+            >
+              {pending && <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />}
+              Verify
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+      <BlurredPlaceholder />
+    </>
+  );
 }
 
 function BlurredPlaceholder() {

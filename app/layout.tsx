@@ -7,6 +7,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "LinkLob",
   description: "Paste and share content throught URLs",
+  metadataBase: new URL("https://linklob.vercel.app/"),
 };
 
 const font = DM_Sans({
