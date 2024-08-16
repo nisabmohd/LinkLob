@@ -9,12 +9,14 @@ import { cache } from "react";
 import remarkGfm from "remark-gfm";
 import Verifier from "@/components/verify";
 
-export const dynamic = "force-static",
-  dynamicParams = true;
+//  removing isr
 
-export function generateStaticParams() {
-  return [];
-}
+// export const dynamic = "force-static",
+//   dynamicParams = true;
+
+// export function generateStaticParams() {
+//   return [];
+// }
 
 const cachedGetPasteFn = cache(getPaste);
 

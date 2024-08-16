@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 import { hash as hashAsync, compare as compareAsync } from "bcryptjs";
 import { eq } from "drizzle-orm";
-import { revalidatePath } from "next/cache";
+// import { revalidatePath } from "next/cache";
 
 const newPasteSchema = z.object({
   content: z.string(),
@@ -30,7 +30,7 @@ export async function create(formData: FormData) {
     })
     .returning();
   const createdPaste = data[0];
-  revalidatePath(`/${createdPaste.id}`);
+  // revalidatePath(`/${createdPaste.id}`);
   redirect(`/${createdPaste.id}`);
 }
 
