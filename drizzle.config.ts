@@ -1,14 +1,10 @@
-import type { Config } from "drizzle-kit";
-import { loadEnvConfig } from "@next/env";
+import "dotenv/config";
+import { defineConfig } from "drizzle-kit";
 
-const dev = process.env.NODE_ENV !== "production";
-loadEnvConfig("./", dev);
-
-export default {
-  schema: "./drizzle/schema.ts",
-  out: "./drizzle/migrations",
-  driver: "pg",
+export default defineConfig({
+  schema: "./db/schema.ts",
+  dialect: "postgresql",
   dbCredentials: {
-    connectionString: process.env.POSTGRES_URL!,
+    url: process.env.POSTGRES_URL!,
   },
-} satisfies Config;
+});
