@@ -5,24 +5,19 @@ import { db } from "@/db";
 import { pasteTable, TPaste } from "@/db/schema";
 import { and, eq } from "drizzle-orm";
 import { z } from "zod";
-import { hashSync } from "bcryptjs";
+import { compareSync, hashSync } from "bcryptjs";
 import { marked } from "marked";
 
 function sanitizeMarkdownWithMarked(markdownContent: string) {
-  // Configure `marked` with valid options
   marked.setOptions({
-    gfm: true, // Enable GitHub-flavored markdown
-    breaks: true, // Convert newlines into <br> tags
-    silent: false, // Silent mode, avoids throwing errors on invalid markdown
+    gfm: true,
+    breaks: true,
+    silent: false,
   });
 
-  // Sanitize: Disable HTML rendering by escaping HTML
   const renderer = new marked.Renderer();
-  renderer.html = () => ""; // Disable raw HTML rendering completely
-
-  // Convert markdown to sanitized HTML
+  renderer.html = () => "";
   const sanitizedHTML = marked(markdownContent, { renderer });
-
   return sanitizedHTML;
 }
 
@@ -73,4 +68,15 @@ export async function getAllPasteForUser(): Promise<TPaste[]> {
     .from(pasteTable)
     .where(eq(pasteTable.userId, session.user.id!));
   return userPastes;
+}
+
+export async function verifyPasswordForPaste(id: string, password: string) {
+  const paste = (
+    await db.select().from(pasteTable).where(eq(pasteTable.id, id))
+  )[0];
+  if (!paste) return { success: false, error: "No paste found" };
+  if (!paste.password) return { success: false, error: "It is public" };
+  const match = compareSync(password, paste.password);
+  if (match) return { success: true };
+  return { success: false, error: "Password didnt match" };
 }
