@@ -17,7 +17,6 @@ export const pasteTable = pgTable("pastes", {
   password: varchar("password"),
   userId: text("userId").references(() => users.id),
   publishedAt: timestamp("published").notNull().defaultNow(),
-  isActive: boolean("active").default(true),
 });
 
 export type TPaste = typeof pasteTable.$inferSelect;

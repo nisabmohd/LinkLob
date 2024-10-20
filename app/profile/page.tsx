@@ -2,6 +2,7 @@ import { getAllPasteForUser } from "@/actions/paste";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 
+// todo
 export default async function ProfilePage() {
   const session = await auth();
   if (!session?.user) redirect("/");

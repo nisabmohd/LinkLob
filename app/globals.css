@@ -75,3 +75,16 @@
     @apply bg-background text-foreground;
   }
 }
+
+body .w-md-editor-text-pre>code,
+body .w-md-editor-text-input {
+  @apply font-mono !important
+}
+
+.wmde-markdown {
+  @apply font-mono !important
+}
+
+.wmde-markdown {
+  @apply bg-background text-primary font-mono !important
+}
