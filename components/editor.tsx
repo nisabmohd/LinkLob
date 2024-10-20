@@ -49,7 +49,7 @@ export default function Editor() {
     <form
       action={handleSubmit}
       data-color-mode={resolvedTheme}
-      className="w-[800px] flex flex-col gap-4"
+      className="md:w-[800px] flex flex-col gap-4"
     >
       <div className="h-[250px]">
         <MDEditor
@@ -62,7 +62,7 @@ export default function Editor() {
         />
       </div>
 
-      <div className="grid grid-cols-2 gap-1">
+      <div className="grid sm:grid-cols-2 grid-cols-1 gap-1 space-y-2">
         <Input
           value={otherInputs.title}
           onChange={(e) =>

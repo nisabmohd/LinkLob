@@ -12,7 +12,7 @@ export default async function Navbar() {
       <Link href="/" className="text-2xl font-bold">
         LinkLob
       </Link>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center sm:gap-2 -space-x-1.5">
         <ModeToggle />
         {session?.user ? (
           <LoggedInUser />
@@ -32,12 +32,12 @@ async function LoggedInUser() {
   const session = await auth();
   if (!session?.user) return null;
   return (
-    <div className="flex items-center -space-x-2">
+    <div className="flex items-center sm:-space-x-2 -space-x-5">
       <Link className={buttonVariants({ variant: "link" })} href="/profile">
         Profile
       </Link>
       <form action={signOutAction}>
-        <Button className={buttonVariants({ variant: "link" })}>Signout</Button>
+        <button className={buttonVariants({ variant: "link" })}>Signout</button>
       </form>
     </div>
   );

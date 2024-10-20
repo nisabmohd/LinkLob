@@ -41,7 +41,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="container mx-auto">
+          <main className="container mx-auto sm:px-0 px-5">
             <Navbar />
             <Toaster />
             {children}

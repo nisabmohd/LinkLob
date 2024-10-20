@@ -24,7 +24,7 @@ export function Delete({ id }: { id: string }) {
   }
   return (
     <form action={handleDelete}>
-      <Button disabled={pending} type="submit">
+      <Button size="sm" variant="secondary" disabled={pending} type="submit">
         {pending && <LoaderCircleIcon className="animate-spin mr-2 w-5 h-5" />}
         Delete Paste
       </Button>
@@ -44,5 +44,9 @@ export function CopyUrl({ id }: { id: string }) {
       });
     });
   }
-  return <Button onClick={handleCopy}>Copy URL</Button>;
+  return (
+    <Button size="sm" variant="secondary" onClick={handleCopy}>
+      Copy URL
+    </Button>
+  );
 }

@@ -17,13 +17,19 @@ export default async function ViewMarkdownPage({ params }: PageParam) {
   return (
     <Verifier isProtected={!!data.password} pasteId={data.id}>
       <div className="max-w-[700px] py-5 mx-auto">
-        <div className="flex items-center gap-3">
-          <CopyUrl id={data.id} />
-          {session?.user?.id == data.userId && <Delete id={data.id} />}
-        </div>
-        <div className="py-8 font-mono flex flex-col gap-2">
-          <h2 className="text-3xl font-semibold">{data.title}</h2>
-          <p className="pb-3">{data.publishedAt.toDateString()}</p>
+        <div className="py-8 font-mono flex flex-col gap-3">
+          <h2 className="sm:text-3xl text-2xl font-semibold">{data.title}</h2>
+          <p className="text-sm">
+            Created on: {data.publishedAt.toDateString()}
+          </p>
+          <div className="flex items-center gap-3 pb-3 pt-1">
+            {session?.user?.id == data.userId && (
+              <>
+                <CopyUrl id={data.id} />
+                <Delete id={data.id} />
+              </>
+            )}
+          </div>
           <MarkdownViewer content={data.markdown} />
         </div>
       </div>
